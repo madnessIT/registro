@@ -24,7 +24,7 @@ $pdf->Cell(25, 8, 'Tarifa', 0);
 $pdf->Ln(8);
 $pdf->SetFont('Arial', '', 8);
 //CONSULTA
-$productos = mysql_query("SELECT * FROM habitacion");
+$productos = mysql_query("SELECT * FROM habitacion ORDER BY codigo ASC");
 $item = 0;
 $totaluni = 0;
 $totaldis = 0;
