@@ -7,11 +7,11 @@ $id = $_POST['id'];
 
 //ELIMINAMOS EL PRODUCTO
 
-mysql_query("DELETE FROM habitacion WHERE codigo = '$id'");
+mysql_query("DELETE FROM habitacion_detalle WHERE codigo = '$id'");
 
 //ACTUALIZAMOS LOS REGISTROS Y LOS OBTENEMOS
 
-$registro = mysql_query("SELECT * FROM habitacion ORDER BY codigo ASC");
+$registro = mysql_query("SELECT * FROM habitacion_detalle ORDER BY codigo ASC");
 
 //CREAMOS NUESTRA VISTA Y LA DEVOLVEMOS AL AJAX
 

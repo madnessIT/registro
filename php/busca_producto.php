@@ -5,7 +5,7 @@ $dato = $_POST['dato'];
 
 //EJECUTAMOS LA CONSULTA DE BUSQUEDA
 
-$registro = mysql_query("SELECT * FROM habitacion WHERE codigo LIKE '%$dato%' ORDER BY codigo ASC");
+$registro = mysql_query("SELECT * FROM habitacion_detalle WHERE codigo LIKE '%$dato%' ORDER BY codigo ASC");
 
 //CREAMOS NUESTRA VISTA Y LA DEVOLVEMOS AL AJAX
 

@@ -39,7 +39,7 @@
             </tr>
             <?php 
 					include('../php/conexion.php');
-					$registro = mysql_query("SELECT * FROM habitacion ORDER BY codigo ASC");
+					$registro = mysql_query("SELECT * FROM habitacion_detalle ORDER BY codigo ASC");
 					while($registro2 = mysql_fetch_array($registro)){
 						echo '<tr>
 								<td>'.$registro2['codigo'].'</td>
@@ -83,11 +83,11 @@
                     </tr>
                     <tr>
                     	<td>Tipo Habitacion: </td>
-                        <td><select required="required" name="tipo" id="tipo">
-                        		<option value="SIMPLE">SIMPLE</option>
-                                <option value="DOBLE">DOBLE</option>
-                                <option value="TRIPLE">TRIPLE</option>
-                                <option value="FAMILIAR">FAMILIAR</option>
+                        <td><select required="required" name="tipo_habitacion" id="tipo_habitacion">
+                                <option value="1">SIMPLE</option>
+                                <option value="3">DOBLE</option>
+                                <option value="4">TRIPLE</option>
+                                <option value="2">FAMILIAR</option>
                             
                             </select></td>
                     </tr>
