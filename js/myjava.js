@@ -80,11 +80,16 @@ function editarProducto(id){
 				$('#reg').hide();
 				$('#edi').show();
 				$('#pro').val('Edicion');
-				$('#id-prod').val(id);
-				$('#nombre').val(datos[0]);
+				$('#id').val(id);
+				$('#codigo').val(datos[0]);
 				$('#tipo').val(datos[1]);
-				$('#precio-uni').val(datos[2]);
-				$('#precio-dis').val(datos[3]);
+				$('#tipo-banio').val(datos[2]);
+				$('#frigobar').val(datos[3]);
+                $('#sofa-cama').val(datos[4]);
+                $('#cama-extra').val(datos[5]);
+                $('#nro-simple').val(datos[6]);
+                $('#nro-matri').val(datos[7])
+                $('#tarifa').val(datos[8])
 				$('#registra-producto').modal({
 					show:true,
 					backdrop:'static'

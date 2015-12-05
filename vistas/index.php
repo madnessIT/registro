@@ -18,7 +18,7 @@
     <section>
     <table border="0" align="center">
     	<tr>
-        	<td width="400"><input type="text" placeholder="Busca habitacion por Numero" id="bs-prod"/></td>
+        	<td width="400"><input type="text" placeholder="Busca por Numero Habitacion" id="bs-prod"/></td>
             <td width="100"><button id="nuevo-producto" class="btn btn-primary">Nuevo</button></td>
             <td width="200"><a target="_blank" href="productos.php" class="btn btn-danger">Exportar a PDF</a></td>
         </tr>
@@ -27,7 +27,6 @@
     <div class="registros" id="agrega-registros">
     	<table class="table table-striped table-condensed table-hover">
         	<tr>
-                <th width="200">ID</th>
             	<th width="200">Numero</th>
                 <th width="200">Tipo</th>
                 <th width="100">Tipo Baño</th>
@@ -36,7 +35,6 @@
                 <th width="100">Cama Extra</th>
                 <th width="100">Numero Simples</th>
                 <th width="100">Numero Matrimoniales</th>
-                <th width="100">Tipo Habitacion</th>
                 <th width="100">Tarifa</th>
             </tr>
             <?php 
@@ -44,7 +42,6 @@
 					$registro = mysql_query("SELECT * FROM habitacion ORDER BY codigo ASC");
 					while($registro2 = mysql_fetch_array($registro)){
 						echo '<tr>
-                                <td>'.$registro2['id'].'</td>
 								<td>'.$registro2['codigo'].'</td>
 								<td>'.$registro2['tipo'].'</td>
 								<td>'.$registro2['tipo_banio'].'</td>
@@ -53,7 +50,6 @@
                                 <td>'.$registro2['cama_Extra'].'</td>
                                 <td>'.$registro2['nr_simples'].'</td>
                                 <td>'.$registro2['nro_matrimniales'].'</td>
-                                <td>'.$registro2['tipo_habitacion'].'</td>
 								<td>Bs.'.$registro2['tarifa'].'</td>
 								<td><a href="javascript:editarProducto('.$registro2['codigo'].');" class="glyphicon glyphicon-edit"></a> <a href="javascript:eliminarProducto('.$registro2['codigo'].');" class="glyphicon glyphicon-remove-circle"></a></td>
 							</tr>';		
@@ -75,18 +71,14 @@
             <div class="modal-body">
 				<table border="0" width="100%">
                		 <tr>
-                        <td colspan="2"><input type="text" required="required" readonly="readonly" id="id-prod" name="id-prod" readonly="readonly" style="visibility:hidden; height:5px;"/></td>
+                        <td colspan="2"><input type="text" required="required" readonly="readonly" id="id" name="id" readonly="readonly" style="visibility:hidden; height:5px;"/></td>
                     </tr>
                      <tr>
                     	<td width="150">Proceso: </td>
                         <td><input type="text" required="required" readonly="readonly" id="pro" name="pro"/></td>
                     </tr>
-                	<tr>
-                        <td>ID: </td>
-                        <td><input type="text" required="required" name="nombre" id="nombre" maxlength="100"/></td>
-                    </tr>
                     <tr>
-                        <td>Codigo: </td>
+                        <td>Numero Habitacion: </td>
                         <td><input type="text" required="required" name="codigo" id="codigo" maxlength="100"/></td>
                     </tr>
                     <tr>
@@ -101,7 +93,7 @@
                     </tr>
                     <tr>
                     	<td>Tipo Baño: </td>
-                        <td><select required="required" name="tipo_banio" id="tipo_banio">
+                        <td><select required="required" name="tipo-banio" id="tipo-banio">
                         		<option value="COMPARTIDO">COMPARTIDO</option>
                                 <option value="PRIVADO">PRIVADO</option>
                                 
@@ -113,23 +105,19 @@
                     </tr>
                     <tr>
                     	<td>Sofa Cama: </td>
-                        <td><input type="number"  required="required" name="sofa_cama" id="sofa_cama"/></td>
+                        <td><input type="number"  required="required" name="sofa-cama" id="sofa-cama"/></td>
                     </tr>
                     <tr>
                     	<td>Cama Extra: </td>
-                        <td><input type="number"  required="required" name="cama_Extra" id="cama_Extra"/></td>
+                        <td><input type="number"  required="required" name="cama-extra" id="cama-extra"/></td>
                     </tr>
                     <tr>
                     	<td>Numero Simples: </td>
-                        <td><input type="number"  required="required" name="nr_simples" id="nr_simples"/></td>
+                        <td><input type="number"  required="required" name="nro-simple" id="nro-simple"/></td>
                     </tr>
                     <tr>
                     	<td>Numero Matrimoniales: </td>
-                        <td><input type="number"  required="required" name="nro_matrimniales" id="nro_matrimniales"/></td>
-                    </tr>
-                    <tr>
-                    	<td>Tipo Habitacion: </td>
-                        <td><input type="number"  required="required" name="tipo_habitacion" id="tipo_habitacion"/></td>
+                        <td><input type="number"  required="required" name="nro-matri" id="nro-matri"/></td>
                     </tr>
                     <tr>
                     	<td>Tarifa: </td>
