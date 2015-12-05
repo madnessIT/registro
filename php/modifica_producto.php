@@ -17,7 +17,8 @@ $proceso = $_POST['pro'];
 
 switch($proceso){
 	case 'Registro':
-		$query = "INSERT INTO habitacion (id, codigo, tipo_banio, frigobar, sofa_cama, cama_Extra, nr_simples, nro_matrimniales, tipo_habitacion,tarifa) VALUES('$id''$codigo','$tipo_banio','$frigobar','$sofa_cama','$cama_Extra','$nr_simples','$nro_matrimniales','$tipo_habitacion','$tarifa')";
+		$id = $codigo;	//Revisar
+		$query = "INSERT INTO habitacion (id, codigo, tipo_banio, frigobar, sofa_cama, cama_Extra, nr_simples, nro_matrimniales, tipo_habitacion,tarifa) VALUES('$id', '$codigo','$tipo_banio','$frigobar','$sofa_cama','$cama_Extra','$nr_simples','$nro_matrimniales','$tipo_habitacion','$tarifa')";
 		mysql_query($query);
 	break;
 	
@@ -26,6 +27,8 @@ switch($proceso){
 		mysql_query($query);
 	break;
 }
+
+//die($query);
 
 //ACTUALIZAMOS LOS REGISTROS Y LOS OBTENEMOS
 
