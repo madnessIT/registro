@@ -55,7 +55,7 @@
                                 <td>'.$registro2['nro_matrimniales'].'</td>
                                 <td>'.$registro2['tipo_habitacion'].'</td>
 								<td>Bs.'.$registro2['tarifa'].'</td>
-								<td><a href="javascript:editarProducto('.$registro2['id'].');" class="glyphicon glyphicon-edit"></a> <a href="javascript:eliminarProducto('.$registro2['codigo'].');" class="glyphicon glyphicon-remove-circle"></a></td>
+								<td><a href="javascript:editarProducto('.$registro2['codigo'].');" class="glyphicon glyphicon-edit"></a> <a href="javascript:eliminarProducto('.$registro2['codigo'].');" class="glyphicon glyphicon-remove-circle"></a></td>
 							</tr>';		
 					}
 			?>

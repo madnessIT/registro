@@ -5,7 +5,7 @@ $id = $_POST['id'];
 
 //OBTENEMOS LOS VALORES DEL PRODUCTO
 
-$valores = mysql_query("SELECT * FROM habitacion WHERE id = '$id'");
+$valores = mysql_query("SELECT * FROM habitacion WHERE codigo = '$id'");
 $valores2 = mysql_fetch_array($valores);
 
 $datos = array(

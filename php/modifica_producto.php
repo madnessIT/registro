@@ -1,5 +1,6 @@
 <?php
 include('conexion.php');
+
 $id = $_POST['id'];
 $codigo = $_POST['codigo'];
 $tipo = $_POST['tipo'];
