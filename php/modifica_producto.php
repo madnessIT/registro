@@ -3,31 +3,36 @@ include('conexion.php');
 
 $id = $_POST['id'];
 $codigo = $_POST['codigo'];
-$tipo = $_POST['tipo'];
 $tipo_banio = $_POST['tipo-banio'];
 $frigobar = $_POST['frigobar'];
 $sofa_cama = $_POST['sofa-cama'];
 $cama_Extra = $_POST['cama-extra'];
 $nr_simples = $_POST['nro-simple'];
 $nro_matrimniales = $_POST['nro-matri'];
-//$tipo_habitacion = $_POST['tipo_habitacion'];
+$tipo_habitacion = $_POST['tipo_habitacion'];
 $tarifa = $_POST['tarifa'];
 //VERIFICAMOS EL PROCESO
+$proceso = $_POST['pro'];
+
 
 switch($proceso){
 	case 'Registro':
-		mysql_query("INSERT INTO habitacion (id, codigo, tipo, tipo_banio, frigobar, sofa_cama, cama_Extra, nr_simples, nro_matrimniales, tipo_habitacion,tarifa) VALUES('$id''$codigo','$tipo','$tipo_banio','$frigobar','$sofa_cama','$cama_Extra','$nr_simples','$nro_matrimniales','$tipo_habitacion','$tarifa')");
+		$id = $codigo;	//Revisar
+		$query = "INSERT INTO habitacion (id, codigo, tipo_banio, frigobar, sofa_cama, cama_Extra, nr_simples, nro_matrimniales, tipo_habitacion,tarifa) VALUES('$id', '$codigo','$tipo_banio','$frigobar','$sofa_cama','$cama_Extra','$nr_simples','$nro_matrimniales','$tipo_habitacion','$tarifa')";
+		mysql_query($query);
 	break;
 	
 	case 'Edicion':
-		mysql_query("UPDATE productos SET id = '$id', codigo = '$codigo', tipo = '$tipo', tipo_banio = '$tipo_banio',frigobar = '$frigobar',sofa_cama = '$sofa_cama',cama_Extra = '$cama_Extra',nr_simples = '$nr_simples',nro_matrimniales = '$nro_matrimniales',tipo_habitacion = '$tipo_habitacion', tarifa = '$tarifa' WHERE codigo = '$codigo'");
+		$query = "UPDATE habitacion SET id = '$id', codigo = '$codigo', tipo_banio = '$tipo_banio',frigobar = '$frigobar',sofa_cama = '$sofa_cama',cama_Extra = '$cama_Extra',nr_simples = '$nr_simples',nro_matrimniales = '$nro_matrimniales',tipo_habitacion = '$tipo_habitacion', tarifa = '$tarifa' WHERE codigo = '$codigo'";
+		mysql_query($query);
 	break;
 }
 
+//die($query);
 
 //ACTUALIZAMOS LOS REGISTROS Y LOS OBTENEMOS
 
-$registro = mysql_query("SELECT * FROM habitacion ORDER BY codigo ASC");
+$registro = mysql_query("SELECT * FROM habitacion_detalle ORDER BY codigo ASC");
 
 //CREAMOS NUESTRA VISTA Y LA DEVOLVEMOS AL AJAX
 

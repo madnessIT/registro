@@ -76,20 +76,22 @@ function editarProducto(id){
 		url:url,
 		data:'id='+id,
 		success: function(valores){
-				var datos = eval(valores);
+				var datos = JSON.parse(valores);
 				$('#reg').hide();
 				$('#edi').show();
 				$('#pro').val('Edicion');
 				$('#id').val(id);
-				$('#codigo').val(datos[0]);
-				$('#tipo').val(datos[1]);
-				$('#tipo-banio').val(datos[2]);
-				$('#frigobar').val(datos[3]);
-                $('#sofa-cama').val(datos[4]);
-                $('#cama-extra').val(datos[5]);
-                $('#nro-simple').val(datos[6]);
-                $('#nro-matri').val(datos[7])
-                $('#tarifa').val(datos[8])
+				$('#codigo').val(datos['codigo']);
+				//console.log(JSON.stringify(datos));
+				//$('#tipo').val(datos['tipo']);
+				$('#tipo-banio').val(datos['tipo_banio']);
+				$('#frigobar').val(datos['frigobar']);
+                $('#sofa-cama').val(datos['sofa_cama']);
+                $('#cama-extra').val(datos['cama_Extra']);
+                $('#nro-simple').val(datos['nr_simples']);
+                $('#nro-matri').val(datos['nro_matrimniales']);
+                $('#tarifa').val(datos['tarifa']);
+				$('#tipo_habitacion').val(datos['tipo_habitacion']);
 				$('#registra-producto').modal({
 					show:true,
 					backdrop:'static'

@@ -1,53 +1,56 @@
-CREATE DATABASE  IF NOT EXISTS `aljhav5_hostaldb` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `aljhav5_hostaldb`;
--- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.1.12
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1    Database: hostaldb
--- ------------------------------------------------------
--- Server version	5.6.24
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 05-12-2015 a las 20:13:33
+-- Versión del servidor: 5.6.16
+-- Versión de PHP: 5.5.11
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `clase_habitacion`
+-- Base de datos: `aljhav5_hostaldb`
+--
+CREATE DATABASE IF NOT EXISTS `aljhav5_hostaldb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `aljhav5_hostaldb`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clase_habitacion`
 --
 
 DROP TABLE IF EXISTS `clase_habitacion`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `clase_habitacion` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `clase_habitacion`
+-- Volcado de datos para la tabla `clase_habitacion`
 --
 
-LOCK TABLES `clase_habitacion` WRITE;
-/*!40000 ALTER TABLE `clase_habitacion` DISABLE KEYS */;
-INSERT INTO `clase_habitacion` VALUES (1,'Simple'),(2,'Familiar'),(3,'Doble'),(4,'Triple');
-/*!40000 ALTER TABLE `clase_habitacion` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `clase_habitacion` (`id`, `descripcion`) VALUES
+(1, 'SIMPLE'),
+(2, 'FAMILIAR'),
+(3, 'DOBLE'),
+(4, 'TRIPLE');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `cliente`
+-- Estructura de tabla para la tabla `cliente`
 --
 
 DROP TABLE IF EXISTS `cliente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cliente` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
@@ -58,26 +61,26 @@ CREATE TABLE `cliente` (
   `doc_identidad` varchar(45) DEFAULT NULL,
   `profesion` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cliente`
+-- Volcado de datos para la tabla `cliente`
 --
 
-LOCK TABLES `cliente` WRITE;
-/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'luis','321','ffda@mail.com',NULL,NULL,NULL,NULL),(2,'luis','3211','ffda@mail.com',NULL,NULL,NULL,NULL),(3,'luis','3211','ffda@mail.com',NULL,NULL,NULL,NULL),(4,'AAA','WQR','qerasdf',NULL,NULL,NULL,NULL),(5,'juan perez','3141232','jj@gmai.com',NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `cliente` (`id`, `nombre`, `telefono`, `email`, `procedencia`, `nacionalidad`, `doc_identidad`, `profesion`) VALUES
+(1, 'luis', '321', 'ffda@mail.com', NULL, NULL, NULL, NULL),
+(2, 'luis', '3211', 'ffda@mail.com', NULL, NULL, NULL, NULL),
+(3, 'luis', '3211', 'ffda@mail.com', NULL, NULL, NULL, NULL),
+(4, 'AAA', 'WQR', 'qerasdf', NULL, NULL, NULL, NULL),
+(5, 'juan perez', '3141232', 'jj@gmai.com', NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `cuenta`
+-- Estructura de tabla para la tabla `cuenta`
 --
 
 DROP TABLE IF EXISTS `cuenta`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cuenta` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tpo_contacto` varchar(45) DEFAULT NULL,
@@ -109,28 +112,23 @@ CREATE TABLE `cuenta` (
   `costo_serviciosExtra` int(11) DEFAULT '0',
   `total_pagado` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `cli_cuenta_idx` (`cliente_resp`),
-  CONSTRAINT `cli_cuenta` FOREIGN KEY (`cliente_resp`) REFERENCES `cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  KEY `cli_cuenta_idx` (`cliente_resp`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cuenta`
+-- Volcado de datos para la tabla `cuenta`
 --
 
-LOCK TABLES `cuenta` WRITE;
-/*!40000 ALTER TABLE `cuenta` DISABLE KEYS */;
-INSERT INTO `cuenta` VALUES (29,NULL,'2015-11-11','2015-11-18','2015-11-20',2,'231231','2015-11-27','juan','perez','2321','','boa','a78','00:00:00','Germany',NULL,NULL,'juan perez','jj@gmai.com','3141232','2015-11-15',2,5,'OCUPADO','',520,1988,0);
-/*!40000 ALTER TABLE `cuenta` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `cuenta` (`id`, `tpo_contacto`, `fecha_llegada`, `fecha_ingreso`, `fecha_salida`, `noches`, `numero_tarjeta`, `exp_date`, `firstname_tarjeta`, `lastname_tarjeta`, `codigo`, `servicio_recojo`, `aerolinea`, `vuelo`, `hora`, `desde`, `observacion`, `responsable`, `nombre`, `email`, `telefono`, `fecha_reserva`, `numero_personas`, `cliente_resp`, `estado`, `pago_tarjeta`, `costo_estadia`, `costo_serviciosExtra`, `total_pagado`) VALUES
+(29, NULL, '2015-11-11', '2015-11-18', '2015-11-20', 2, '231231', '2015-11-27', 'juan', 'perez', '2321', b'1', 'boa', 'a78', '00:00:00', 'Germany', NULL, NULL, 'juan perez', 'jj@gmai.com', '3141232', '2015-11-15', 2, 5, 'OCUPADO', b'1', 520, 1988, 0);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `estadia`
+-- Estructura de tabla para la tabla `estadia`
 --
 
 DROP TABLE IF EXISTS `estadia`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `estadia` (
   `id_estadia` int(11) NOT NULL AUTO_INCREMENT,
   `habitacion` int(11) DEFAULT NULL,
@@ -145,33 +143,27 @@ CREATE TABLE `estadia` (
   `doc_identificacion` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_estadia`),
   KEY `hab_reserva_idx` (`habitacion`),
-  KEY `estadia_cuenta_fk_idx` (`idReserva`),
-  CONSTRAINT `estadia_cuenta_fk` FOREIGN KEY (`idReserva`) REFERENCES `cuenta` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `hab_reserva` FOREIGN KEY (`habitacion`) REFERENCES `habitacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  KEY `estadia_cuenta_fk_idx` (`idReserva`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `estadia`
+-- Volcado de datos para la tabla `estadia`
 --
 
-LOCK TABLES `estadia` WRITE;
-/*!40000 ALTER TABLE `estadia` DISABLE KEYS */;
-INSERT INTO `estadia` VALUES (18,4,'OCUPADO','2015-11-18','',29,'2015-11-18','2015/11/15',NULL,NULL,NULL),(19,6,'OCUPADO','2015-11-18','',29,'2015-11-18','2015/11/15',NULL,NULL,NULL);
-/*!40000 ALTER TABLE `estadia` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `estadia` (`id_estadia`, `habitacion`, `estado`, `fecha_ingreso`, `con_reserva`, `idReserva`, `fecha_egreso`, `fecha_registro`, `nombre_ocupante`, `apellido_ocupante`, `doc_identificacion`) VALUES
+(18, 4, 'OCUPADO', '2015-11-18', b'1', 29, '2015-11-18', '2015/11/15', NULL, NULL, NULL),
+(19, 6, 'OCUPADO', '2015-11-18', b'1', 29, '2015-11-18', '2015/11/15', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `habitacion`
+-- Estructura de tabla para la tabla `habitacion`
 --
 
 DROP TABLE IF EXISTS `habitacion`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `habitacion` (
   `id` int(11) NOT NULL,
   `codigo` varchar(45) DEFAULT NULL,
-  `tipo` varchar(45) DEFAULT NULL,
   `tipo_banio` varchar(45) DEFAULT NULL,
   `frigobar` bit(1) DEFAULT b'0',
   `sofa_cama` bit(1) DEFAULT b'0',
@@ -182,41 +174,55 @@ CREATE TABLE `habitacion` (
   `tarifa` decimal(10,0) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `tipoHabitacion_idx` (`tipo_banio`),
-  KEY `tipo_habFK_idx` (`tipo_habitacion`),
-  CONSTRAINT `clase_habFK` FOREIGN KEY (`tipo_habitacion`) REFERENCES `clase_habitacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `tipo_habFK_idx` (`tipo_habitacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `habitacion`
+-- Volcado de datos para la tabla `habitacion`
 --
 
-LOCK TABLES `habitacion` WRITE;
-/*!40000 ALTER TABLE `habitacion` DISABLE KEYS */;
-INSERT INTO `habitacion` (`id`, `codigo`, `tipo`, `tipo_banio`, `frigobar`, `sofa_cama`, `cama_Extra`, `nr_simples`, `nro_matrimniales`, `tipo_habitacion`, `tarifa`) VALUES
-(0, '203', 'TRIPLE', 'COMPARTIDO', b'0', b'0', b'0', 3, 0, 4, '250'),
-(1, '102', 'DOBLE', 'COMPARTIDO', b'1', b'0', b'0', 2, 0, 3, '180'),
-(2, '103', 'TRIPLE', 'COMPARTIDO', b'0', b'0', b'0', 3, 0, 4, '140'),
-(3, '104', 'DOBLE', 'PRIVADO', b'0', b'1', b'0', 0, 1, 3, '120'),
-(4, '105', 'TRIPLE', 'PRIVADO', b'1', b'0', b'1', 1, 1, 4, '160'),
-(5, '201', 'SIMPLE', 'COMPARTIDO', b'0', b'0', b'0', 1, 0, 1, '90'),
-(6, '202', 'DOBLE', 'COMPARTIDO', b'0', b'0', b'0', 2, 0, 3, '100'),
-(7, '204', 'FAMILIAR', 'COMPARTIDO', b'0', b'0', b'0', 4, 0, 2, '320'),
-(8, '205', 'DOBLE', 'PRIVADO', b'0', b'0', b'0', 2, 0, 3, '280'),
-(9, '206', 'TRIPLE', 'PRIVADO', b'0', b'0', b'0', 1, 1, 4, '320'),
-(10, '207', 'TRIPLE', 'PRIVADO', b'0', b'0', b'0', 1, 1, 4, '320'),
-(11, '208', 'DOBLE', 'COMPARTIDO', b'0', b'0', b'0', 0, 1, 3, '180'),
-(12, '209', 'FAMILIAR', 'COMPARTIDO', b'0', b'0', b'0', 5, 0, 2, '600'),
-(13, '210', 'FAMILIAR', 'COMPARTIDO', b'0', b'0', b'0', 5, 0, 2, '600');
-UNLOCK TABLES;
+INSERT INTO `habitacion` (`id`, `codigo`, `tipo_banio`, `frigobar`, `sofa_cama`, `cama_Extra`, `nr_simples`, `nro_matrimniales`, `tipo_habitacion`, `tarifa`) VALUES
+(0, '203', 'COMPARTIDO', b'0', b'0', b'0', 3, 0, 4, '250'),
+(2, '103', 'COMPARTIDO', b'0', b'0', b'0', 3, 0, 4, '140'),
+(3, '104', 'PRIVADO', b'0', b'1', b'0', 0, 1, 3, '120'),
+(4, '105', 'PRIVADO', b'1', b'0', b'1', 1, 1, 4, '160'),
+(5, '201', 'COMPARTIDO', b'0', b'0', b'0', 1, 0, 1, '90'),
+(6, '202', 'COMPARTIDO', b'0', b'0', b'0', 2, 0, 3, '100'),
+(7, '204', 'COMPARTIDO', b'0', b'0', b'0', 4, 0, 2, '320'),
+(8, '205', 'PRIVADO', b'0', b'0', b'0', 2, 0, 3, '280'),
+(9, '206', 'PRIVADO', b'0', b'0', b'0', 1, 1, 4, '320'),
+(10, '207', 'PRIVADO', b'0', b'0', b'0', 1, 1, 4, '320'),
+(11, '208', 'COMPARTIDO', b'0', b'0', b'0', 0, 1, 3, '180'),
+(12, '209', 'COMPARTIDO', b'0', b'0', b'0', 5, 0, 2, '600'),
+(13, '210', 'COMPARTIDO', b'0', b'0', b'0', 5, 0, 2, '600'),
+(102, '102', 'COMPARTIDO', b'1', b'1', b'1', 2, 0, 1, '180');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `ocupantes`
+-- Estructura Stand-in para la vista `habitacion_detalle`
+--
+DROP VIEW IF EXISTS `habitacion_detalle`;
+CREATE TABLE `habitacion_detalle` (
+`id` int(11)
+,`codigo` varchar(45)
+,`tipo_banio` varchar(45)
+,`frigobar` bit(1)
+,`sofa_cama` bit(1)
+,`cama_Extra` bit(1)
+,`nr_simples` int(11)
+,`nro_matrimniales` int(11)
+,`tipo_habitacion` int(11)
+,`tarifa` decimal(10,0)
+,`tipo` varchar(45)
+);
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ocupantes`
 --
 
 DROP TABLE IF EXISTS `ocupantes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ocupantes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
@@ -227,28 +233,26 @@ CREATE TABLE `ocupantes` (
   `doc_identidad` varchar(45) DEFAULT NULL,
   `foto` longblob,
   PRIMARY KEY (`id`),
-  KEY `ocu_estadia_idx` (`id_estadia`),
-  CONSTRAINT `ocu_estadia` FOREIGN KEY (`id_estadia`) REFERENCES `estadia` (`id_estadia`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  KEY `ocu_estadia_idx` (`id_estadia`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ocupantes`
+-- Volcado de datos para la tabla `ocupantes`
 --
 
-LOCK TABLES `ocupantes` WRITE;
-/*!40000 ALTER TABLE `ocupantes` DISABLE KEYS */;
-INSERT INTO `ocupantes` VALUES (40,'juan','perez','','2015-11-15',18,'9281',NULL),(41,'maria','perez','','2015-11-15',18,'02831',NULL),(42,'marcia','lopez','','2015-11-15',19,'8913',NULL),(43,'sergio','doynel','','2015-11-15',19,'1131',NULL);
-/*!40000 ALTER TABLE `ocupantes` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `ocupantes` (`id`, `nombre`, `apellido`, `estado`, `fecha_registro`, `id_estadia`, `doc_identidad`, `foto`) VALUES
+(40, 'juan', 'perez', b'1', '2015-11-15', 18, '9281', NULL),
+(41, 'maria', 'perez', b'1', '2015-11-15', 18, '02831', NULL),
+(42, 'marcia', 'lopez', b'1', '2015-11-15', 19, '8913', NULL),
+(43, 'sergio', 'doynel', b'1', '2015-11-15', 19, '1131', NULL);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `pedido`
+-- Estructura de tabla para la tabla `pedido`
 --
 
 DROP TABLE IF EXISTS `pedido`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pedido` (
   `idPedido` int(11) NOT NULL AUTO_INCREMENT,
   `idReserva` int(11) DEFAULT NULL,
@@ -259,29 +263,25 @@ CREATE TABLE `pedido` (
   `total` float DEFAULT '0',
   PRIMARY KEY (`idPedido`),
   KEY `prod_pedido_idx` (`idProducto`),
-  KEY `reserva_pedido_idx` (`idReserva`),
-  CONSTRAINT `prod_pedido` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `reserva_pedido` FOREIGN KEY (`idReserva`) REFERENCES `estadia` (`id_estadia`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  KEY `reserva_pedido_idx` (`idReserva`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `pedido`
+-- Volcado de datos para la tabla `pedido`
 --
 
-LOCK TABLES `pedido` WRITE;
-/*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
-INSERT INTO `pedido` VALUES (10,18,1,1,'2015-11-15 00:00:00',2,2),(11,19,2,2,'2015-11-15 00:00:00',3,6),(12,19,4,2,'2015-11-15 00:00:00',990,1980);
-/*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `pedido` (`idPedido`, `idReserva`, `idProducto`, `cantidad`, `fecha`, `precioU`, `total`) VALUES
+(10, 18, 1, 1, '2015-11-15 00:00:00', 2, 2),
+(11, 19, 2, 2, '2015-11-15 00:00:00', 3, 6),
+(12, 19, 4, 2, '2015-11-15 00:00:00', 990, 1980);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `producto`
+-- Estructura de tabla para la tabla `producto`
 --
 
 DROP TABLE IF EXISTS `producto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `producto` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
@@ -291,14 +291,11 @@ CREATE TABLE `producto` (
   `servicio` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `producto`
+-- Volcado de datos para la tabla `producto`
 --
 
-LOCK TABLES `producto` WRITE;
-/*!40000 ALTER TABLE `producto` DISABLE KEYS */;
 INSERT INTO `producto` (`id`, `descripcion`, `tipo`, `precio`, `unidad`, `servicio`) VALUES
 (0, 'Helado', 'Frigobar', '5', 'Bolsa', b'0'),
 (1, 'Almuerzo Ejectivo', 'Restaurante', '2', 'Personal', NULL),
@@ -317,16 +314,14 @@ INSERT INTO `producto` (`id`, `descripcion`, `tipo`, `precio`, `unidad`, `servic
 (14, 'Mushroom Soup', 'Restarurante', '15', 'tazon', NULL),
 (15, 'Ham & cheese sandwich', 'Restarurante', '25', 'sandwich', NULL),
 (16, 'Tuna salad sandwich', 'Restarurante', '30', 'sandwich', NULL);
-/*!40000 ALTER TABLE `producto` ENABLE KEYS */;
-UNLOCK TABLES;
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estructura de tabla para la tabla `usuario`
 --
 
 DROP TABLE IF EXISTS `usuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `usuario` varchar(45) DEFAULT NULL,
@@ -336,25 +331,60 @@ CREATE TABLE `usuario` (
   `rol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuario`
+-- Volcado de datos para la tabla `usuario`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'test','test','test','1','ADMINISTRADOR'),(2,'admin','admin','admin','1','ADMINISTRADOR');
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `usuario` (`id`, `usuario`, `clave`, `nombre`, `estado`, `rol`) VALUES
+(1, 'test', 'test', 'test', '1', 'ADMINISTRADOR'),
+(2, 'admin', 'admin', 'admin', '1', 'ADMINISTRADOR');
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `habitacion_detalle`
+--
+DROP TABLE IF EXISTS `habitacion_detalle`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `habitacion_detalle` AS select `habitacion`.`id` AS `id`,`habitacion`.`codigo` AS `codigo`,`habitacion`.`tipo_banio` AS `tipo_banio`,`habitacion`.`frigobar` AS `frigobar`,`habitacion`.`sofa_cama` AS `sofa_cama`,`habitacion`.`cama_Extra` AS `cama_Extra`,`habitacion`.`nr_simples` AS `nr_simples`,`habitacion`.`nro_matrimniales` AS `nro_matrimniales`,`habitacion`.`tipo_habitacion` AS `tipo_habitacion`,`habitacion`.`tarifa` AS `tarifa`,`clase_habitacion`.`descripcion` AS `tipo` from (`habitacion` join `clase_habitacion` on((`habitacion`.`tipo_habitacion` = `clase_habitacion`.`id`)));
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `cuenta`
+--
+ALTER TABLE `cuenta`
+  ADD CONSTRAINT `cli_cuenta` FOREIGN KEY (`cliente_resp`) REFERENCES `cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `estadia`
+--
+ALTER TABLE `estadia`
+  ADD CONSTRAINT `estadia_cuenta_fk` FOREIGN KEY (`idReserva`) REFERENCES `cuenta` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `hab_reserva` FOREIGN KEY (`habitacion`) REFERENCES `habitacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `habitacion`
+--
+ALTER TABLE `habitacion`
+  ADD CONSTRAINT `clase_habFK` FOREIGN KEY (`tipo_habitacion`) REFERENCES `clase_habitacion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `ocupantes`
+--
+ALTER TABLE `ocupantes`
+  ADD CONSTRAINT `ocu_estadia` FOREIGN KEY (`id_estadia`) REFERENCES `estadia` (`id_estadia`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `pedido`
+--
+ALTER TABLE `pedido`
+  ADD CONSTRAINT `prod_pedido` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `reserva_pedido` FOREIGN KEY (`idReserva`) REFERENCES `estadia` (`id_estadia`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2015-11-14 22:49:44
