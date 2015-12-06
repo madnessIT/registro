@@ -7,7 +7,7 @@ $id = $_POST['id'];
 
 //ELIMINAMOS EL PRODUCTO
 
-mysql_query("DELETE FROM habitacion_detalle WHERE codigo = '$id'");
+mysql_query("DELETE FROM habitacion WHERE codigo = '$id'");
 
 //ACTUALIZAMOS LOS REGISTROS Y LOS OBTENEMOS
 

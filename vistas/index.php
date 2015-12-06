@@ -20,7 +20,7 @@
     	<tr>
         	<td width="400"><input type="text" placeholder="Busca por Numero Habitacion" id="bs-prod"/></td>
             <td width="100"><button id="nuevo-producto" class="btn btn-primary">Nuevo</button></td>
-            <td width="200"><a target="_blank" href="productos.php" class="btn btn-danger">Exportar a PDF</a></td>
+            <td width="200"><a target="_blank" href="habitaciones.php" class="btn btn-danger">Exportar a PDF</a></td>
         </tr>
     </table>
     </section>
