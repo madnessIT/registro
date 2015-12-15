@@ -227,6 +227,12 @@ function editarFood(id){
 	return false;
 }
 
+function exportarBusquedaFacturaAPdf(textoBusqueda){
+	//var textoBusqueda = $('#'+idTextboxBusqueda).val();
+	window.open('consumo.php?textoBusqueda=' + textoBusqueda);
+	return false;
+}
+
 // SERVICIOS POR CLIENTE
 
 $(function(){

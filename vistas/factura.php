@@ -20,7 +20,7 @@
     	<tr>
         	<td width="400"><input type="text" placeholder="Busca por Cliente" id="bs-factura"/></td>
            <!-- <td width="100"><button id="nuevo-producto" class="btn btn-primary">Nuevo</button></td>-->
-            <td width="200"><a target="_blank" href="consumo.php" class="btn btn-danger">Exportar a PDF</a></td>
+            <td width="200"><a target="_blank" onclick="return exportarBusquedaFacturaAPdf($('#bs-factura').val())" class="btn btn-danger">Exportar a PDF</a></td>
         </tr>
     </table>
     </section>
@@ -43,7 +43,12 @@
 								<td>'.$registro2['cantidad'].'</td>
                                 <td>'.$registro2['precioU'].'</td>
                                 <td>'.$registro2['nombre'].'</td>
-								<td><a <<href="javascript:editarProducto('.$registro2['nombre'].');" class="glyphicon glyphicon-edit"></a> <a href="javascript:eliminarProducto('.$registro2['nombre'].');" class="glyphicon glyphicon-remove-circle"></a></td>
+								<td>
+								    <a href="javascript:editarProducto('.$registro2['nombre'].');" class="glyphicon glyphicon-edit"></a>
+								    <a href="javascript:eliminarProducto('.$registro2['nombre'].');" class="glyphicon glyphicon-remove-circle"></a>
+								    <a href="consumo.php?idPedido='.$registro2['idPedido'].'" target="_blank"><img src="../recursos/pdf.gif" /></a>
+								</td>
+
 							</tr>';		
 					}
 			?>

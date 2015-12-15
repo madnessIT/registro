@@ -25,7 +25,16 @@ $pdf->Cell(40, 8, 'idPedido', 0);
 $pdf->Ln(8);
 $pdf->SetFont('Arial', '', 8);
 //CONSULTA
-$productos = mysql_query("SELECT * FROM factura_descripcion ORDER BY idPedido ASC");
+if(isset($_GET['textoBusqueda'])){
+	$textoBusquedaEscapado = mysql_real_escape_string($_GET['textoBusqueda']);
+	$condicion = " nombre LIKE '%$textoBusquedaEscapado%'";
+}else if(isset($_GET['idPedido'])){
+	$condicion = " idPedido = ".$_GET['idPedido'];
+}else{
+	$condicion = "1=1";	//Solo por si acaso, si es que no llegó idPedido ni textoBusqueda. Por el momento esto no sucede.
+}
+
+$productos = mysql_query("SELECT * FROM factura_descripcion WHERE $condicion ORDER BY idPedido ASC");
 $item = 0;
 $totaluni = 0;
 $totaldis = 0;
