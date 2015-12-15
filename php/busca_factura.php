@@ -28,7 +28,7 @@ if(mysql_num_rows($registro)>0){
 								<td>
 									<a href="javascript:editarProducto('.$registro2['nombre'].');" class="glyphicon glyphicon-edit"></a>
 									<a href="javascript:eliminarProducto('.$registro2['nombre'].');" class="glyphicon glyphicon-remove-circle"></a>
-									<a href="consumo.php?idPedido=\'.$registro2[\'idPedido\'].\'" target="_blank"><img src="../recursos/pdf.gif" /></a>
+									<a href="consumo.php?idPedido='.$registro2['idPedido'].'" target="_blank"><img src="../recursos/pdf.gif" /></a>
 								</td>
 				</tr>';
 	}
